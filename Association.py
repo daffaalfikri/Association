@@ -7,7 +7,6 @@ df = pd.read_csv("Groceries data.csv")
 
 st.title("Market Analyst MBA")
 
-
 def get_data(itemDescription='', year=''):
     data = df.copy()
     filtered = data.loc[
@@ -15,7 +14,6 @@ def get_data(itemDescription='', year=''):
         (data["year"].astype(str).str.contains(year))
     ]
     return filtered if not filtered.empty else "No Result"
-
 
 def user_input_features():
     Product = st.selectbox("Member_number", ['1808', '2552', '2300', '1187',
@@ -36,18 +34,15 @@ def user_input_features():
     year = st.select_slider("year", list(map(str, range(1, 12))))
     return itemDescription, year, Product
 
-
 itemDescription, year, Product = user_input_features()
 
 data = get_data(itemDescription.lower(), year)
-
 
 def encode(x):
     if x <= 0:
         return 0
     elif x >= 1:
         return 1
-
 
 if not isinstance(data, str):
     val_counts = df["itemDescription"].value_counts()
@@ -62,14 +57,12 @@ if not isinstance(data, str):
                               min_threshold=1).sort_values('lift', ascending=False).reset_index(drop=True)[["antecedents", "consequents", "support", "confidence", "lift"]]
     rules.sort_values('confidence', ascending=False, inplace=True)
 
-
 def parse_list(x):
     x = list(x)
     if len(x) == 1:
         return x[0]
     elif len(x) > 1:
         return ", ".join(x)
-
 
 def return_product_df(product_antecedents):
     data = rules[["antecedents", "consequents"]].copy()
@@ -78,7 +71,6 @@ def return_product_df(product_antecedents):
     data["consequents"] = data["consequents"].apply(parse_list)
 
     return list(data.loc[data["antecedents"] == product_antecedents].iloc[0, :])
-
 
 if type(data) != type("No Result"):
     st.markdown("Rekomendasi: ")
