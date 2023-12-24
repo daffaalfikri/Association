@@ -20,9 +20,19 @@ def get_data(itemDescription='', year=''):
 def user_input_features():
     Product = st.selectbox("Member_number", ['1808', '2552', '2300', '1187',
                            '3037', '4941', '4501'])
-    itemDescription = st.selectbox("itemDescription", ['whole milk', 'other vegetables', 'rolls/buns', 'soda', 'yogurt',
-                                                       'tropical fruit', 'bottled water', 'sausage', 'citrus fruit', 'pastry',
-                                                       'pip fruit'])
+    itemDescription = st.selectbox("itemDescription", ['pastry', 'whole milk', 'citrus fruit', 'pastry', 'other vegetables', 'sausage', 'bottled water', 'pastry', 'bottled water', 'citrus fruit',
+                                                      'rolls/buns', 'whole milk', 'other vegetables', 'whole milk', 'citrus fruit', 'rolls/buns', 'bottled water', 'rolls/buns',
+                                                      'pastry', 'yogurt', 'rolls/buns', 'yogurt', 'other vegetables', 'yogurt', 'whole milk', 'yogurt', 'pastry', 'pip fruit', 'soda', 'whole milk',
+                                                      'pastry', 'tropical fruit', 'pip fruit ', 'rolls/buns', 'other vegetables', 'pip fruit ', 
+                                                      'pastry', 'soda', 'rolls/buns', 'soda', 'rolls/buns', 'tropical fruit', 'soda', 'yogurt', 
+                                                       'other vegetables', 'soda', 'other vegetables', 'tropical fruit', 'citrus fruit', 'sausage', 
+                                                       'bottled water', 'sausage', 'citrus fruit', 'whole milk', 'soda', 'tropical fruit', 'bottled water', 'whole milk', 'pip fruit ', 'sausage', 'sausage', 'whole milk', 
+                                                       'bottled water', 'yogurt', 'pip fruit ', 'whole milk', 'citrus fruit', 'yogurt', 'sausage', 'yogurt', 
+                                                       'bottled water', 'pip fruit ', 'citrus fruit', 'pip fruit ', 'bottled water', 'tropical fruit', 
+                                                       'citrus fruit', 'soda', 'pip fruit ', 'yogurt', 'citrus fruit', 'tropical fruit', 'bottled water', 'soda', 'pastry', 'rolls/buns', 'sausage', 'tropical fruit', 'other vegetables', 'pastry', 
+                                                       'other vegetables', 'rolls/buns', 'pip fruit ', 'tropical fruit', 'tropical fruit', 'whole milk', 
+                                                       'sausage', 'soda', 'pip fruit ', 'soda', 'tropical fruit', 'yogurt', 'citrus fruit', 'other vegetables',
+                                                       'bottled water', 'other vegetables', 'pastry', 'sausage', 'rolls/buns', 'sausage'])
     year = st.select_slider("year", list(map(str, range(1, 12))))
     return itemDescription, year, Product
 
