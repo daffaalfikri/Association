@@ -46,11 +46,11 @@ def encode(x):
 
 if not isinstance(data, str):
     val_counts = df["itemDescription"].value_counts()
-    product_count_pivot = val_counts.pivot_table(
+    itemDescription_count_pivot = val_counts.pivot_table(
         index='itemDescription', columns='Member_number', values='Count', aggfunc='sum').fillna(0)
-    product_count_pivot = product_count_pivot.applymap(encode)
+    itemDescription_count_pivot = itemDescription_count_pivot.applymap(encode)
 
-    frequent_itemsets_plus = apriori(product_count_pivot, min_support=0.03,
+    frequent_itemsets_plus = apriori(itemDescription_count_pivot, min_support=0.03,
                                      use_colnames=True).sort_values('support', ascending=False).reset_index(drop=True)
 
     rules = association_rules(frequent_itemsets_plus, metric='lift',
